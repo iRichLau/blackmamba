@@ -12,13 +12,16 @@
 #import "AFNetworking.h"
 
 @interface buttonViewController () <CLLocationManagerDelegate>
-@property (weak, nonatomic) NSString *latitude;
-@property (weak, nonatomic) NSString *longitude;
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
+@property (strong, nonatomic) NSString *address;
 @end
 
 @implementation buttonViewController {
     @private BOOL isSelected;
     CLLocationManager *locationManager;
+    CLGeocoder *geocoder;
+    CLPlacemark *placemark;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,6 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     locationManager = [[CLLocationManager alloc] init];
+    geocoder = [[CLGeocoder alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -177,45 +181,25 @@
 }
 - (void)sendEmail:(NSArray *)emails {
     
+    NSString *emailSubject = [NSString stringWithFormat:@"Please be advised. The last known location of %@ was at latitude: %@ and longitude: %@. Based on this information the approximate address of this location is: %@. Please provide this information to the appropriate authorities.", [[PFUser currentUser] objectForKey:@"username"], _latitude, _longitude, _address];
     
-    [self findMostRecentLocation];
+    SendGrid *sendgrid = [SendGrid apiUser:@"" apiKey:@""];
     
-    NSString *emailSubject = [NSString stringWithFormat:@"%@/%@/%@/%@/%@/%@", @"The last known location of ", [[PFUser currentUser] objectForKey:@"username"], @"is at - latitude: ", _latitude, @" and longitude: ", _longitude];
-    
-    sendgrid *msg = [sendgrid user:@"" andPass:@""];
-    
-    NSMutableArray *emailArray = [[NSMutableArray alloc] init];
-    for (PFObject *email in emails) {
-        [emailArray addObject:[email valueForKey:@"email"]];
+    NSMutableArray *emailContacts = [[NSMutableArray alloc] init];
+        for (PFObject *email in emails) {
+        [emailContacts addObject:[email valueForKey:@"email"]];
     }
-    msg.tolist = emailArray;
-    msg.subject = @"New Black Mamba Location";
-    msg.from = @"richardlau.rlau@gmail.com";
-    msg.text = emailSubject;
-    NSLog(@"%@", msg.to);
-    NSLog(@"%@", msg.from);
-    NSLog(@"%@", msg.text);
-    NSLog(@"%@", msg.subject);
-    
-    
-    [msg sendWithWeb];
-}
 
--(void)findMostRecentLocation{
-    PFQuery *locationsQuery = [PFQuery queryWithClassName:@"location"];
-    [locationsQuery whereKey:@"user" equalTo:[PFUser currentUser]];
-    [locationsQuery orderByDescending:@"createdAt"];
     
-    [locationsQuery getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-    NSLog(@"%@", object);
-        if (object) {
-            self.latitude = [object objectForKey:@"latitude"];
-            self.longitude =[object objectForKey:@"longitude"];
-        } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No locations were found." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
-    }];
+    SendGridEmail *sgEmail = [[SendGridEmail alloc] init];
+    
+    [sgEmail setTos:emailContacts];
+    sgEmail.subject = @"Black Mamba Rescue Beacon Location ALERT";
+    sgEmail.from = @"richardlau.rlau@gmail.com";
+    sgEmail.text = emailSubject;
+   
+    [sendgrid sendWithWeb:sgEmail];
+
 }
 
 - (IBAction)alertButton:(id)sender {
@@ -236,11 +220,11 @@
     }
 }
 
-- (void)addLocation:(NSString *)latitude longitude: (NSString *)longitude {
+- (void)saveLocation{
     PFObject *newLocation = [PFObject objectWithClassName:@"location"];
     
-    [newLocation setObject:latitude forKey:@"latitude"];
-    [newLocation setObject:longitude forKey:@"longitude"];
+    [newLocation setObject:_latitude forKey:@"latitude"];
+    [newLocation setObject:_longitude forKey:@"longitude"];
     [newLocation setObject:[PFUser currentUser] forKey:@"user"];
     
     [newLocation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -263,16 +247,26 @@
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
     CLLocation *currentLocation = [locations lastObject];
     if (currentLocation != nil) {
-        NSString *latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
-        NSString *longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
-        [self addLocation:latitude longitude:longitude];
-        [locationManager stopUpdatingLocation];
-        [self alertContacts];
-        locationManager.delegate = nil;
+        self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        [self saveLocation];
     }
+
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (error == nil && [placemarks count] > 0) {
+            placemark = [placemarks lastObject];
+            self.address = [NSString stringWithFormat:@"%@ %@ %@, %@, %@, %@", placemark.subThoroughfare, placemark.thoroughfare, placemark.postalCode, placemark.locality, placemark.administrativeArea, placemark.country];
+            [self alertContacts];
+            [locationManager stopUpdatingLocation];
+            locationManager.delegate = nil;
+        } else {
+            NSLog(@"%@", error.debugDescription);
+        }
+    }];
+    
+    
 }
 
 @end

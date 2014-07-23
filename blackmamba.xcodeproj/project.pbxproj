@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A9200B6197EDE580033816D /* SMTPAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9200B5197EDE580033816D /* SMTPAPI.m */; };
+		7A9200B9197EE3C10033816D /* sendgrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9200B8197EE3C10033816D /* sendgrid.m */; };
+		7AA1CC98197EE93C0086E8DE /* SendGridEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA1CC97197EE93C0086E8DE /* SendGridEmail.m */; };
 		7AD1EB92196F0B4000E5D4BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD1EB91196F0B4000E5D4BB /* Foundation.framework */; };
 		7AD1EB94196F0B4000E5D4BB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD1EB93196F0B4000E5D4BB /* CoreGraphics.framework */; };
 		7AD1EB96196F0B4000E5D4BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD1EB95196F0B4000E5D4BB /* UIKit.framework */; };
 		7AD1EB9C196F0B4000E5D4BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1EB9A196F0B4000E5D4BB /* InfoPlist.strings */; };
 		7AD1EB9E196F0B4000E5D4BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EB9D196F0B4000E5D4BB /* main.m */; };
 		7AD1EBA2196F0B4000E5D4BB /* blackmambaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBA1196F0B4000E5D4BB /* blackmambaAppDelegate.m */; };
-		7AD1EBA5196F0B4000E5D4BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1EBA3196F0B4000E5D4BB /* Main.storyboard */; };
 		7AD1EBA8196F0B4000E5D4BB /* blackmambaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBA7196F0B4000E5D4BB /* blackmambaViewController.m */; };
 		7AD1EBAA196F0B4000E5D4BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AD1EBA9196F0B4000E5D4BB /* Images.xcassets */; };
 		7AD1EBB1196F0B4000E5D4BB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AD1EBB0196F0B4000E5D4BB /* XCTest.framework */; };
@@ -36,7 +38,6 @@
 		7AD1EBE9197342BE00E5D4BB /* signupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBE8197342BE00E5D4BB /* signupViewController.m */; };
 		7AD1EBEC1974103700E5D4BB /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBEB1974103700E5D4BB /* loginViewController.m */; };
 		7AD1EBEF197449D600E5D4BB /* buttonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBEE197449D600E5D4BB /* buttonViewController.m */; };
-		7AD1EBF219757C0500E5D4BB /* sendgrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBF119757C0500E5D4BB /* sendgrid.m */; };
 		7AD1EC0719757E0000E5D4BB /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBF519757E0000E5D4BB /* AFHTTPRequestOperation.m */; };
 		7AD1EC0819757E0000E5D4BB /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBF719757E0000E5D4BB /* AFHTTPRequestOperationManager.m */; };
 		7AD1EC0919757E0000E5D4BB /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD1EBF919757E0000E5D4BB /* AFHTTPSessionManager.m */; };
@@ -59,6 +60,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A9200B4197EDE580033816D /* SMTPAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTPAPI.h; sourceTree = "<group>"; };
+		7A9200B5197EDE580033816D /* SMTPAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTPAPI.m; sourceTree = "<group>"; };
+		7A9200B7197EE3C10033816D /* sendgrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sendgrid.h; sourceTree = "<group>"; };
+		7A9200B8197EE3C10033816D /* sendgrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sendgrid.m; sourceTree = "<group>"; };
+		7AA1CC96197EE93C0086E8DE /* SendGridEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendGridEmail.h; path = "../../../../Downloads/sendgrid-objc/Classes/SendGridEmail.h"; sourceTree = "<group>"; };
+		7AA1CC97197EE93C0086E8DE /* SendGridEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendGridEmail.m; path = "../../../../Downloads/sendgrid-objc/Classes/SendGridEmail.m"; sourceTree = "<group>"; };
 		7AD1EB8E196F0B4000E5D4BB /* blackmamba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blackmamba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD1EB91196F0B4000E5D4BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7AD1EB93196F0B4000E5D4BB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,8 +103,6 @@
 		7AD1EBEB1974103700E5D4BB /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		7AD1EBED197449D600E5D4BB /* buttonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buttonViewController.h; sourceTree = "<group>"; };
 		7AD1EBEE197449D600E5D4BB /* buttonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buttonViewController.m; sourceTree = "<group>"; };
-		7AD1EBF019757C0500E5D4BB /* sendgrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sendgrid.h; path = "../../../../Downloads/sendgrid-objc/Classes/sendgrid.h"; sourceTree = "<group>"; };
-		7AD1EBF119757C0500E5D4BB /* sendgrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = sendgrid.m; path = "../../../../Downloads/sendgrid-objc/Classes/sendgrid.m"; sourceTree = "<group>"; };
 		7AD1EBF419757E0000E5D4BB /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		7AD1EBF519757E0000E5D4BB /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		7AD1EBF619757E0000E5D4BB /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -202,10 +207,14 @@
 				7AD1EBA1196F0B4000E5D4BB /* blackmambaAppDelegate.m */,
 				7AD1EBA3196F0B4000E5D4BB /* Main.storyboard */,
 				7AD1EBED197449D600E5D4BB /* buttonViewController.h */,
-				7AD1EBF019757C0500E5D4BB /* sendgrid.h */,
-				7AD1EBF119757C0500E5D4BB /* sendgrid.m */,
 				7AD1EBEE197449D600E5D4BB /* buttonViewController.m */,
 				7AD1EBEA1974103700E5D4BB /* loginViewController.h */,
+				7AA1CC96197EE93C0086E8DE /* SendGridEmail.h */,
+				7AA1CC97197EE93C0086E8DE /* SendGridEmail.m */,
+				7A9200B7197EE3C10033816D /* sendgrid.h */,
+				7A9200B8197EE3C10033816D /* sendgrid.m */,
+				7A9200B4197EDE580033816D /* SMTPAPI.h */,
+				7A9200B5197EDE580033816D /* SMTPAPI.m */,
 				7AD1EBEB1974103700E5D4BB /* loginViewController.m */,
 				7AD1EBE7197342BE00E5D4BB /* signupViewController.h */,
 				7AD1EBE8197342BE00E5D4BB /* signupViewController.m */,
@@ -357,7 +366,6 @@
 				7AD1EBAA196F0B4000E5D4BB /* Images.xcassets in Resources */,
 				7AD1EB9C196F0B4000E5D4BB /* InfoPlist.strings in Resources */,
 				7AD1EBE3197048BA00E5D4BB /* Default-568h@2x.png in Resources */,
-				7AD1EBA5196F0B4000E5D4BB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,12 +389,14 @@
 				7AD1EBEC1974103700E5D4BB /* loginViewController.m in Sources */,
 				7AD1EBEF197449D600E5D4BB /* buttonViewController.m in Sources */,
 				7AD1EC0E19757E0000E5D4BB /* AFURLResponseSerialization.m in Sources */,
+				7AA1CC98197EE93C0086E8DE /* SendGridEmail.m in Sources */,
 				7AD1EB9E196F0B4000E5D4BB /* main.m in Sources */,
 				7AD1EC0D19757E0000E5D4BB /* AFURLRequestSerialization.m in Sources */,
+				7A9200B9197EE3C10033816D /* sendgrid.m in Sources */,
 				7AD1EC0B19757E0000E5D4BB /* AFSecurityPolicy.m in Sources */,
 				7AD1EC0719757E0000E5D4BB /* AFHTTPRequestOperation.m in Sources */,
 				7AD1EC0F19757E0000E5D4BB /* AFURLSessionManager.m in Sources */,
-				7AD1EBF219757C0500E5D4BB /* sendgrid.m in Sources */,
+				7A9200B6197EDE580033816D /* SMTPAPI.m in Sources */,
 				7AD1EBE9197342BE00E5D4BB /* signupViewController.m in Sources */,
 				7AD1EC0919757E0000E5D4BB /* AFHTTPSessionManager.m in Sources */,
 				7AD1EBA2196F0B4000E5D4BB /* blackmambaAppDelegate.m in Sources */,
@@ -604,6 +614,7 @@
 				7AD1EBC2196F0B4000E5D4BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7AD1EBC3196F0B4000E5D4BB /* Build configuration list for PBXNativeTarget "blackmambaTests" */ = {
 			isa = XCConfigurationList;
@@ -612,6 +623,7 @@
 				7AD1EBC5196F0B4000E5D4BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

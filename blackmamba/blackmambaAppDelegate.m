@@ -13,8 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    ;
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
     // Override point for customization after application launch.
     return YES;
 }
